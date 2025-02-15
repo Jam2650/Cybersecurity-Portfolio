@@ -42,4 +42,4 @@ In this repository, you will find the following projects:
    - Key outcomes
 
 ## How to Contact Me
-You can reach me at [Your Email] or connect with me on LinkedIn: [Your LinkedIn Profile Link].
+Connect with me on LinkedIn: https://www.linkedin.com/in/jam110958/ 
