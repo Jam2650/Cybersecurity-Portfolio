@@ -12,11 +12,11 @@ Welcome to my cybersecurity portfolio! Here, I showcase the projects and work I'
 
 ## About Me
 
-I’m [Your Name], a cybersecurity enthusiast with a passion for ethical hacking, risk management, and network security. I have experience in both offensive and defensive security, and I am constantly learning new skills to stay ahead of emerging threats.
+I’m Jeff, a cybersecurity student with a passion for ethical hacking, risk management, and network security. I have experience in both offensive and defensive security, and I am constantly learning new skills to stay ahead of emerging threats.
 
 ## Skills
 
-- Programming: Python, Bash, C++
+- Programming: Python
 - Tools: Kali Linux, Burp Suite, Wireshark, Metasploit
 - Vulnerability Assessment, Exploitation, and Remediation
 - Web Application Security (OWASP)
