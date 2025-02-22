@@ -1,0 +1,78 @@
+
+Network Traffic Analysis Using WiresharkNetwork Traffic Analysis Using Wireshark
+
+        Objective:
+        To analyze network traffic using Wireshark, identify potential security threats, and demonstrate fundamental network forensics skills.
+
+        Tools Used:
+
+        Wireshark
+
+        Kali Linux (Virtual Machine)
+
+        Sample PCAP (Packet Capture) Files
+
+        Overview:
+        Wireshark is a powerful network protocol analyzer used to capture and inspect network packets in real time. This project focuses on capturing live traffic and analyzing a pre-recorded PCAP file to identify potential security threats.
+
+        Process:
+
+        Uploaded sample brute force packet capture.
+
+        Opened Wireshark and selected the appropriate network interface.
+
+        Analyzing PCAP Files:
+
+        Loaded a sample PCAP file containing potential security incidents.
+
+        Applied filters such as: 
+
+        tcp.dstport == 21
+
+        tcp.analysis.flags
+
+        ip.src == 192.168.56.1
+
+        ftp
+
+        Detected anomalies such as: 
+
+        Suspicious FTP queries and multiple login attempts
+
+        Threat Detection and Mitigation:
+
+        Identified a potential brute-force attack based on multiple failed login attempts.
+
+        Noted the presence of an FTP exploitation utilizing USER: bro and 220 redmint FTP server
+
+        Recommended mitigations: 
+
+        Disable port 20/21
+
+        Implementing network segmentation, and using an Intrusion 
+
+        Detection System (IDS) for real-time monitoring.
+
+        Key Takeaways:
+
+        Wireshark is a crucial tool for network monitoring and threat detection.
+
+        Analyzing traffic patterns can help detect early signs of malicious activity.
+
+        Proper network segmentation and port scanning can mitigate security risks.
+
+        Next Steps:
+
+        Automate packet analysis with Python scripts.
+
+        Explore deeper forensic analysis with Suricata and Zeek.
+
+        Conduct a simulated attack to further test network defenses.Objective: To analyze network traffic using Wireshark, identify potential security threats, and demonstrate fundamental network forensics skills. Tools Used: Wireshark Kali Linux (Virtual Machine) Sample PCAP (Packet Capture) Files Overview: Wireshark is a powerful network protocol analyzer used to capture and inspect network packets in real time. This project focuses on capturing live traffic and analyzing a pre-recorded PCAP file to identify potential security threats. Process: Uploaded sample brute force packet capture. Opened Wireshark and selected the appropriate network interface. Analyzing PCAP Files: Loaded a sample PCAP file containing potential security incidents. Applied filters such as: tcp.dstport == 21 tcp.analysis.flags ip.src == 192.168.56.1 ftp Detected anomalies such as: Suspicious FTP queries and multiple login attempts Threat Detection and Mitigation: Identified a potential brute-force attack based on multiple failed login attempts. Noted the presence of an FTP exploitation utilizing USER: bro and 220 redmint FTP server Recommended mitigations: Disable port 20/21 Implementing network segmentation, and using an Intrusion Detection System (IDS) for real-time monitoring. Key Takeaways: Wireshark is a crucial tool for network monitoring and threat detection. Analyzing traffic patterns can help detect early signs of malicious activity. Proper network segmentation and port scanning can mitigate security risks. Next Steps: Automate packet analysis with Python scripts. Explore deeper forensic analysis with Suricata and Zeek. Conduct a simulated attack to further test network defenses.
+        Skills: Wireshark · Packet Capture
+
+
+
+
+
+
+
