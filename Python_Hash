@@ -1,0 +1,34 @@
+import hashlib
+
+def generate_hash(message, algorithm='sha256'):
+    """
+    Generate a hash of the given message using the specified algorithm.
+    Default algorithm is SHA-256.
+
+    Parameters:
+    - message (str): The message to hash.
+    - algorithm (str): The hash algorithm to use (default is 'sha256').
+
+    Returns:
+    - str: The resulting hash value.
+    """
+    # Ensure the algorithm is valid
+    if algorithm not in hashlib.algorithms_available:
+        return f"Error: {algorithm} is not a valid hash algorithm."
+
+    # Create the hash object based on the algorithm
+    hash_object = hashlib.new(algorithm)
+    
+    # Update the hash object with the message (encoded as bytes)
+    hash_object.update(message.encode())
+
+    # Return the hex representation of the hash
+    return hash_object.hexdigest()
+
+# Test the function
+if __name__ == "__main__":
+    message = input("Enter a message to hash: ")
+    algorithm = input("Enter the hash algorithm (default is sha256): ").lower() or 'sha256'
+
+    hashed_message = generate_hash(message, algorithm)
+    print(f"Hash of the message using {algorithm.upper()} is: {hashed_message}")
