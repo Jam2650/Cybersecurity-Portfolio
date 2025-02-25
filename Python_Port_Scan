@@ -1,0 +1,86 @@
+import socket
+import tkinter as tk
+from tkinter import messagebox
+import threading
+
+# Function to check if a specific port is open on an IP
+def scan_port(ip, port):
+    try:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(1)  # Timeout in seconds
+        result = sock.connect_ex((ip, port))  # Connect to the IP/port
+        sock.close()
+        return result == 0  # If result is 0, the port is open
+    except socket.error:
+        return False
+
+# Function to scan a range of ports on a specific IP
+def scan_ports(ip, port_range, result_text):
+    open_ports = []
+    for port in range(port_range[0], port_range[1] + 1):
+        result_text.insert(tk.END, f"Scanning port {port}...\n")
+        result_text.yview(tk.END)
+
+        if scan_port(ip, port):
+            open_ports.append(port)
+            result_text.insert(tk.END, f"Port {port} is open.\n")
+        else:
+            result_text.insert(tk.END, f"Port {port} is closed.\n")
+
+        result_text.yview(tk.END)
+
+    result_text.insert(tk.END, "\nScan complete.\n")
+    result_text.yview(tk.END)
+    return open_ports
+
+# Function to handle scan when the "Scan Ports" button is clicked
+def on_scan_button_click():
+    ip = entry_ip.get()
+    if not ip:
+        messagebox.showerror("Error", "Please enter a valid IP address.")
+        return
+
+    try:
+        port_range = (int(entry_start_port.get()), int(entry_end_port.get()))
+    except ValueError:
+        messagebox.showerror("Error", "Please enter valid port numbers.")
+        return
+
+    result_text.delete(1.0, tk.END)  # Clear previous results
+    result_text.insert(tk.END, f"Scanning IP: {ip}, Ports {port_range[0]}-{port_range[1]}\n")
+    result_text.yview(tk.END)
+
+    # Start scanning in a separate thread
+    threading.Thread(target=scan_ports, args=(ip, port_range, result_text), daemon=True).start()
+
+# Create the main window
+root = tk.Tk()
+root.title("Port Scanner")
+
+# Create and pack the widgets
+label_ip = tk.Label(root, text="Enter IP Address:")
+label_ip.pack(padx=10, pady=5)
+
+entry_ip = tk.Entry(root, width=30)
+entry_ip.pack(padx=10, pady=5)
+
+label_start_port = tk.Label(root, text="Enter Start Port:")
+label_start_port.pack(padx=10, pady=5)
+
+entry_start_port = tk.Entry(root, width=10)
+entry_start_port.pack(padx=10, pady=5)
+
+label_end_port = tk.Label(root, text="Enter End Port:")
+label_end_port.pack(padx=10, pady=5)
+
+entry_end_port = tk.Entry(root, width=10)
+entry_end_port.pack(padx=10, pady=5)
+
+scan_button = tk.Button(root, text="Scan Ports", command=on_scan_button_click)
+scan_button.pack(padx=10, pady=10)
+
+result_text = tk.Text(root, height=15, width=50)
+result_text.pack(padx=10, pady=10)
+
+# Run the GUI
+root.mainloop()
